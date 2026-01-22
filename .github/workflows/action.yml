@@ -29,14 +29,14 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
   production:
-      needs: test
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      uses: ./.github/workflows/docker-build.yml
-      with:
-        image_name: my_web_app
-      secrets:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/docker-build.yml
+    with:
+      image_name: my_web_app
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
   pushRender:
     needs: production
