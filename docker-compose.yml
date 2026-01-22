@@ -1,5 +1,6 @@
 version: '3.8'
-
+volumes:
+  redis_data:
 services:
   web-app:
     build: .
@@ -12,4 +13,6 @@ services:
 
   db:
     image: "redis:alpine"
+    volumes:
+      - redis_data:/data
     restart: always
