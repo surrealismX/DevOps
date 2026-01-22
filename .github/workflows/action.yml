@@ -38,7 +38,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
   pushRender:
-    needs: call-docker-build
+    needs: production
     runs-on: ubuntu-latest
     steps:
       - name: Render Deploy
